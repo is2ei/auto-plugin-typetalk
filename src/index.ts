@@ -1,4 +1,5 @@
 import { Auto, IPlugin } from '@auto-it/core';
+import fetch from 'node-fetch';
 
 interface ITypetalkPluginOptions {
   mentions?: string[];
@@ -48,5 +49,30 @@ export default class TypetalkPlugin implements IPlugin {
         }
       }
     )    
+  }
+
+  async postToTypetalk(auto: Auto, newVersion: string, releaseNotes: string) {
+    if (!auto.git) {
+      return;
+    }
+
+    auto.logger.verbose.info('Posting release notest to Typetalk');
+
+    const topicID = process.env.TYPETALK_TOPIC_ID;
+    const optToken = process.env.TYPETALK_TOKEN;
+    if (!optToken) {
+      auto.logger.verbose.warn('Typetalk may need a token to send a message');
+    }
+    const token = optToken as string;
+
+    const url = `https://typetalk.com/${topicID}`;
+    const mentions = this.options.mentions? `@${this.options.mentions.join(" @")}\n`: '';
+    const message =  `${mentions}New release ${newVersion}`
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+      headers: { 'X-Typetalk-Token': token, 'Content-Type': 'application/json' }
+    }
+    await fetch(url, options);
   }
 }

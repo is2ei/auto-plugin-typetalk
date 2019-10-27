@@ -1,3 +1,5 @@
+import Auto from '@auto-it/core';
+import { makeHooks } from '@auto-it/core/dist/utils/make-hooks';
 import TypetalkPlugin from '../src';
 
 describe('postToTypetalk', () => {
@@ -8,11 +10,24 @@ describe('postToTypetalk', () => {
 
   test('should have correct plugin name', async () => {
     const plugin = new TypetalkPlugin({});
+
     expect(plugin.name).toBe('Typetalk');
   });
 
   test("doesn't post with no new version", async () => {
-    expect(true).toBe(true);
+    const plugin = new TypetalkPlugin({});
+    const hooks = makeHooks();
+
+    jest.spyOn(plugin, 'postToTypetalk').mockImplementation();
+    plugin.apply({ hooks } as Auto);
+
+    await hooks.afterRelease.promise({
+      lastRelease: '0.1.0',
+      commits: [],
+      releaseNotes: '# My Notes'
+    });
+
+    expect(plugin.postToTypetalk).not.toHaveBeenCalled();
   });
 
   test("doesn't post in dry run", async () => {

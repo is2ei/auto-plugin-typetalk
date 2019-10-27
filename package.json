@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.20",
+    "@types/node-fetch": "^2.5.2",
     "@types/signale": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
@@ -20,9 +21,21 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@auto-it/core": "^7.12.3"
+    "@auto-it/core": "^7.12.3",
+    "node-fetch": "^2.6.0"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "testMatch": [
+      "**/__tests__/*.test.+(ts|tsx|js)",
+      "!**/dist/**/*",
+      "!**/scripts/template-plugin/**/*"
+    ]
   }
 }
