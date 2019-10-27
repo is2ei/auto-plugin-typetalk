@@ -1,7 +1,7 @@
 import { Auto, IPlugin } from '@auto-it/core';
 
 interface ITypetalkPluginOptions {
-  mentions: string[];
+  mentions?: string[];
 }
 
 export default class TypetalkPlugin implements IPlugin {

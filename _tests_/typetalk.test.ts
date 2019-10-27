@@ -1,4 +1,16 @@
+import TypetalkPlugin from '../src';
+
 describe('postToTypetalk', () => {
+  beforeAll(() => {
+    process.env.TYPETALK_TOKEN = '123qweasd';
+    process.env.TYPETALK_TOPIC_ID = '1234567890'
+  });
+
+  test('should have correct plugin name', async () => {
+    const plugin = new TypetalkPlugin({});
+    expect(plugin.name).toBe('Typetalk');
+  });
+
   test("doesn't post with no new version", async () => {
     expect(true).toBe(true);
   });
