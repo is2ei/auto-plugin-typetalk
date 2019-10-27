@@ -3,11 +3,13 @@
     "build": "tsc -b",
     "start": "npm run build -- -w",
     "lint": "eslint ./src ./_tests_ --ext .ts",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "test:coverage:report": "npm run test -- --coverage && codecov -f coverage/*.json"
   },
   "devDependencies": {
     "@types/jest": "^24.0.20",
     "@typescript-eslint/parser": "^2.5.0",
+    "codecov": "^3.6.1",
     "eslint": "^6.6.0",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
