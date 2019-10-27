@@ -1,3 +1,43 @@
 {
-  "parser": "@typescript-eslint/parser"
+  "parser": "@typescript-eslint/parser",
+
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+
+  "extends": [
+    "plugin:jest/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+
+  "plugins": ["@typescript-eslint"],
+
+  "rules": {
+
+    /**
+     * jest plugin
+     */
+     "jest/no-empty-title": 2,
+     "jest/prefer-strict-equal": 2,
+     "jest/prefer-spy-on": 2,
+     "jest/no-standalone-expect": 2,
+     "jest/no-try-expect": 2,
+     "jest/no-export": 2,
+     "jest/no-truthy-falsy": 1,
+     "jest/no-duplicate-hooks": 1,
+     "jest/no-if": 1,
+     "jest/prefer-to-have-length": 1,
+
+    /**
+     * typescript 
+     */
+     "@typescript-eslint/no-this-alias": 2,
+     "@typescript-eslint/no-unnecessary-type-assertion": 2,
+     "@typescript-eslint/no-useless-constructor": 2,
+
+    // just rely on typescript inference
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/interface-name-prefix": 0
+  }
 }
