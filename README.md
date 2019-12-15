@@ -39,3 +39,6 @@ With mentions
   ]
 }
 ```
+
+For working example, see:
+https://github.com/is2ei/auto-plugin-typetalk-example
