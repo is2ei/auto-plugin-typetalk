@@ -1,5 +1,5 @@
 {
-  "include": [ "./src/*",  "./_tests_/*", "./typings/*" ],
+  "include": [ "./src/*",  "./__tests__/*", "./typings/*" ],
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs", // Resolve modules the node way

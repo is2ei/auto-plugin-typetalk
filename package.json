@@ -2,7 +2,7 @@
   "scripts": {
     "build": "tsc -b",
     "start": "npm run build -- -w",
-    "lint": "eslint ./src ./_tests_ --ext .ts",
+    "lint": "eslint ./src ./__tests__ --ext .ts",
     "test": "jest --runInBand",
     "test:coverage": "npm run test -- --coverage",
     "test:coverage:report": "npm run test -- --coverage && codecov -f coverage/*.json"
