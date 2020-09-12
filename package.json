@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@auto-it/core": "^7.12.3",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "jest": {
     "preset": "ts-jest",
